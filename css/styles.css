@@ -1,0 +1,216 @@
+body{
+
+	background-color: white;
+    margin: 0;
+    font-family: 'Oleo Script', cursive;
+}
+
+button:focus, input:focus{
+    outline: 0;
+}
+
+h1{
+    margin: 0;
+}
+
+
+.introContentContainer {
+    display: block;
+    width: 40em;
+    height: 12em;
+    background-color: white;
+    margin: 0 auto;
+    border: 0;
+    position: relative;
+    top: 12em;
+}
+
+.introTitle{
+
+    text-align: center;
+    margin-top: 1em;
+    position: relative;
+    top: 10%;	
+}
+
+
+.introSearch{
+    width: 33em;
+    height: 2.5em;
+    font-size: 0.85em;
+    border: lightgrey solid 1px;
+    padding-left: 2em;
+    margin: 2em 6em 0em 6em;
+}
+
+.introSubmit{
+    cursor: pointer;
+    margin-top: 5em;
+    width: 13em;
+    height: 3em;
+    border: 0;
+    font-weight: bold;
+    font-size: 0.75em;
+    margin: 3em 20.5em;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+}
+
+.introSearch:hover, #topBarSearch:hover{
+    
+    border: darkgrey solid 1px;
+
+}
+
+.introSubmit:hover, #topBarSubmit:hover{
+    
+    border: darkgrey solid 1px;
+    background-color: lightblue;
+    
+}
+
+.introSearch:focus, .introSubmit:focus, #topBarSearch:focus, #topBarSubmit:focus{
+    
+    border: #1f94f4 solid 1px;
+
+}
+
+.topBarContainer{
+    width: 100%;
+    height: 4em;
+    background-color: yellow;
+}
+
+#bottomBarContainer{
+    width: 100%;
+    height: 4em;
+    background-color: yellow;
+    margin-top: 95em;
+}
+
+#topBarTitle{
+
+    float: left;
+    position: relative;
+    top: 12%;
+    left: 3em;
+}
+
+#positioning{
+    margin-left: 43%;
+    position: relative;
+    top: 20%;
+
+}
+
+#topBarSearch{
+
+    float: right;
+    width: 20em;
+    height: 2em;
+    font-size: 0.85em;
+    border: lightgrey solid 1px;
+    padding-left: 2em;
+    margin: 1em 3em 0em 3em;
+
+}
+
+ #topBarSubmit{
+    cursor: pointer;
+    margin-top: 1.2em;
+    float: right;
+    width: 13em;
+    height: 2.5em;
+    border: 0;
+    font-weight: bold;
+    font-size: 0.75em;
+    -webkit-transition: background 0.5s linear;
+    -moz-transition: background 0.5s linear;
+    -o-transition: background 0.5s linear;
+    transition: background 0.5s linear;
+}
+
+.imageArea{
+
+
+    width: 100%;
+    height: 100em;
+    background-color: white;
+}
+
+.imageLink{
+    overflow: hidden;
+    float: left;
+    width:25%;
+    height: 15%;
+/*    object-fit: contain;*/
+}
+
+.flickrImage{
+
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease;
+
+}
+
+
+
+.imageArea, .topBarContainer, #bottomBarContainer, #positioning{
+    display: none;
+}
+
+
+
+.flickrImage:hover{
+
+    opacity: 0.2;
+    width: 125%;
+    height: 125%;
+
+}
+
+/*.flickrImage:active{
+
+    background-color: pink;
+}*/
+
+
+
+
+
+.linkTitle{
+    display: none;
+    position: absolute;
+    font-size: 1em;
+    color: black;
+    margin: 5.5em 0em 0em 2em;
+}
+
+.imageLink:hover > .linkTitle{
+
+    display: block;
+}
+
+/*
+@media screen and(max-width: 900px){
+
+    a{
+    overflow: hidden;
+    float: left;
+    width:33.33%;
+    height: 20%;
+    }
+}*/
+
+
+
+
+
+
+
+
+
+
