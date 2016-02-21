@@ -1,21 +1,92 @@
 $(document).ready( function(){
 
+	var MAXPAGES = 10;
+	var totalPages = 0;
 
-	function flickrSearch(topic,start,stop){
+
+	/**
+	 *	Function that disables the pagination number link if the searched total page number is less than 10.
+	 *	@param {number} totalPageNumber - This is the total Page number from flickr API get call.
+	 */
+	var disablePagination = function(totalPageNumber){
+		/**
+		 *	This if statements checks if totalPageNumber parameter is greater than or equal to MAXPAGES.
+		 */
+		if(totalPageNumber>=MAXPAGES){
+			return;
+		}
+		else{
+			var disableAmount = MAXPAGES - totalPageNumber;
+
+			console.log('disable working')
+			for(var i = 1; i < 6;i++){
+				var number = $(".topPagination li:nth-child("+i+")").text();
+				var numberInt = parseInt(number);
+				console.log(number);
+				for(var k = 10; k > totalPages;k--){
+					if(numberInt === k){
+						$("ul li:nth-child("+i+")").addClass('disabled');
+						$("ul li:nth-child("+i+") a").unbind('click');
+
+					}
+				}
+			}
+		}
+	};
+	/**
+	 *	Function that waits for the click event on the pagination page links. This function uses
+	 *	the flickrSearch and paginationUpdate functions.
+	 */
+	function pageLinkClick(){
+		$("#pageLinks a").on('click', function(){
+			var selected = $(this).text();
+			console.log(typeof $(this).text(), $(this));
+			flickrSearch(userSearch,selected);
+			paginationUpdate(selected);
+		});		
+	};
+
+	pageLinkClick();
+
+
+	
+	/**
+	 *	Function that performs a get request to Flickr api. This also appends the images to the imagearea div.
+	 	@param {string} topic - This is string used for the Flickr API search.
+	 	@param {number} pageNumber - This is the requested page number from Flickr API.
+	 */
+	function flickrSearch(topic,pageNumber){
+		$(".imageArea").empty();
 
 		$.get( "https://api.flickr.com/services/rest/",{
 			method:"flickr.photos.search",
 			api_key: "080047a6f8b1c7aba461cb0f76ec0796",
-			per_page: "260",
+			per_page: "52",
+			page:pageNumber,
 			text: topic,
 			format: "json",
 			nojsoncallback: "1"
 
 		}, function(results){
+			console.log(typeof totalPages, totalPages);
+			totalPages = results.photos.pages;
+			console.log(results);
 
 
+			disablePagination(totalPages);
+			var imageTotal = parseInt(results.photos.total);
 
-			for( var i = start; i< stop;i++){
+			/**
+			 *	This if statement will display a message if the total image results is zero. If the image results
+			 *	is greater than zero then the images will be displayed to the imageArea div.
+			 */
+			if(imageTotal===0){
+				$(".imageArea").append("<p class='zeroImages'>No available images for current search.</p>")
+
+			}
+			else{
+
+				for( var i = 0; i< 52;i++){
 
 				var userID = results.photos.photo[i].owner;
 
@@ -28,115 +99,134 @@ $(document).ready( function(){
 				var url="https://farm"+results.photos.photo[i].farm+".staticflickr.com/"+results.photos.photo[i].server+"/"+results.photos.photo[i].id+"_"+results.photos.photo[i].secret+"_n.jpg";
 
 				$(".imageArea").append("<a href='"+userLink+"' target='_blank' id='imageContainer' class='imageLink' > <h1 class='linkTitle'>"+photoTitle1+" </br> "+photoTitle2+" </br> "+photoTitle3+" ...</h1> <img class='flickrImage' src="+url+"></img></a>");
-
-
-
 			};
+			}
 
 
 		});
-
-
-
 	};
 
-	var userSearch;
+	/**
+	 *	Function that updates the pagination bars numbers. The selected page number will always be centered
+	 *	on the middle of the pagination bar unless its at the end of the MAXPAGES alotment.
+	 *	@param {string} pageNumber - The pagination seleceted page number.
+	 */
+
+	function paginationUpdate(pageNumber){
+		var selectedPage = parseInt(pageNumber);
+		console.log(typeof selectedPage, selectedPage);
+
+		// currentMiddle = Math.round(PAGENUMBERS/2)
+
+		// move button if pageNumber > currentMiddle
+
+			// moveBy = pageNumber - currentMiddle
 
 
+		if(selectedPage < 4){
+			$("ul").empty();
+			console.log("ul",$("ul"));
 
-	$("#topBarSubmit").on("click", function(){
+			for(var i = 1;i<6;i++){
+				// var string = i.toString();
+				$("ul").append("<li id='pageLinks'><a href='#top'>"+i+"</a></li>");
+			}
+			$("ul li:nth-child("+pageNumber+")").addClass("active");
 
+			disablePagination(totalPages);
+			
+		}
+		else if(selectedPage>7 && selectedPage<11){
+			$("ul").empty();
 
+			for(var i = 6;i<11;i++){
+				$("ul").append("<li id='pageLinks'><a href='#top'>"+i+"</a></li>");
+			}
+			$("ul li:nth-child("+(pageNumber - 5)+")").addClass("active");
+			disablePagination(totalPages);
+		}
+		else{
+			var firstPage = selectedPage -2;
+			var secondPage = selectedPage -1;
+			var centeredPage = selectedPage;
+			var fourthPage = selectedPage +1;
+			var lastPage = selectedPage + 2;
+			$("ul").empty();
+			$("ul").append("<li id='pageLinks'><a href='#top'>"+ firstPage +"</a></li>");
+			$("ul").append("<li id='pageLinks'><a href='#top'>"+ secondPage +"</a></li>");
+			$("ul").append("<li id='pageLinks'><a class='active' href='#top'>"+ centeredPage +"</a></li>");
+			$("ul").append("<li id='pageLinks'><a href='#top'>"+ fourthPage +"</a></li>");
+			$("ul").append("<li id='pageLinks'><a href='#top'>"+ lastPage +"</a></li>");
+			$("ul li:nth-child(3)").addClass("active");
+			disablePagination(totalPages);
+		}
+
+		pageLinkClick();
+	};
+	/**
+	 *	Function that resets the imageArea div and ul pagination numbers when a user searches from the top bar.
+	 */
+	var topBarSearchReset = function(){
 		$(".imageArea").empty();
+		$("ul").empty();
 
 		userSearch = $("#topBarSearch").val();
 
-		flickrSearch(userSearch, 0, 52);
-		$("#firstPage").addClass("active");
-		$("#secondPage, #thirdPage, #fourthPage, #fifthPage").removeClass("active");
+		flickrSearch(userSearch, 1);
 
+		for(var i = 1;i<6;i++){
+			$("ul").append("<li id='pageLinks'><a href='#top'>"+i+"</a></li>");
+		}
 
+		$("#pageLinks:nth-child(1)").addClass("active");
+
+		pageLinkClick();
+	}
+
+	/**
+	 *	Function that hides the intro container and displays the "next page" elements when the user searches from the intro page.
+	 */
+	var introSearchReset = function(){
+    	$(".introContentContainer").css("display","none");
+    	$(".topBarContainer,.imageArea, #bottomBarContainer, #positioning,.topPagination").css("display","inline-block");
+
+		userSearch = $(".introSearch").val();
+
+		flickrSearch(userSearch, 1);
+		$("#pageLinks:nth-child(1)").addClass("active");
+	}
+
+	var userSearch;
+
+	/**
+	 *	Top bar search event handlers that wait for click or enter keypress.
+	 */
+	$("#topBarSubmit").on("click", function(){
+		topBarSearchReset();
 	});
 
 	$("#topBarSearch").keypress(function(event) {
 	    if (event.which == 13) {
 
-	    	$(".imageArea").empty();
-
-			userSearch = $("#topBarSearch").val();
-
-			flickrSearch(userSearch, 0, 52);
-		$("#firstPage").addClass("active");
-		$("#secondPage, #thirdPage, #fourthPage, #fifthPage").removeClass("active");
-
+	    	topBarSearchReset();
 	    }
 	});
-
+	/**
+	 *	Intro search event handlers that wait for click or enter keypress.
+	 */
 	$(".introSearch").keypress(function(event) {
 	    if (event.which == 13) {
 
-	    	$(".introContentContainer").css("display","none");
-	    	$(".topBarContainer,.imageArea, #bottomBarContainer, #positioning").css("display","block");
-
-			userSearch = $(".introSearch").val();
-
-			flickrSearch(userSearch, 0 , 52);
+	    	introSearchReset();
 
 	    }
+
 	});
 
 	$(".introSubmit").on("click", function(){
 
-
-    	$(".introContentContainer").css("display","none");
-    	$(".topBarContainer,.imageArea, #bottomBarContainer, #positioning").css("display","block");
-		userSearch = $(".introSearch").val();
-
-		flickrSearch(userSearch, 0, 52);
-	});
-
-
-	$("#firstPage").on("click",function(){
-		$(".imageArea").empty();
-		flickrSearch(userSearch, 0, 52);
-		$("#firstPage").addClass("active");
-		$("#secondPage, #thirdPage, #fourthPage, #fifthPage").removeClass("active");
-	});
-
-	$("#secondPage").on("click",function(){
-		$(".imageArea").empty();
-		flickrSearch(userSearch, 52, 104);
-		$("#secondPage").addClass("active");
-		$("#firstPage, #thirdPage, #fourthPage, #fifthPage").removeClass("active");
+		introSearchReset();
 
 	});
-
-	$("#thirdPage").on("click",function(){
-		$(".imageArea").empty();
-		flickrSearch(userSearch, 104, 156);
-		$("#thirdPage").addClass("active");
-		$("#firstPage, #secondPage, #fourthPage, #fifthPage").removeClass("active");
-
-	});
-
-	$("#fourthPage").on("click",function(){
-		$(".imageArea").empty();
-		flickrSearch(userSearch, 156, 208);
-		$("#fourthPage").addClass("active");
-		$("#firstPage, #secondPage, #thirdPage, #fifthPage").removeClass("active");
-
-	});
-
-	$("#fifthPage").on("click",function(){
-		$(".imageArea").empty();
-		flickrSearch(userSearch, 208, 260);
-		$("#fifthPage").addClass("active");
-		$("#firstPage, #secondPage, #thirdPage, #fourthPage").removeClass("active");
-
-	});
-
-
-
-	
 
 });
