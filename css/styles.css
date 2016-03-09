@@ -1,15 +1,15 @@
-body{
-
-	background-color: white;
+body {
+    background-color: white;
     margin: 0;
     font-family: 'Oleo Script', cursive;
 }
 
-button:focus, input:focus{
+button:focus,
+input:focus {
     outline: 0;
 }
 
-h1{
+h1 {
     margin: 0;
 }
 
@@ -24,16 +24,14 @@ h1{
     top: 12em;
 }
 
-.introTitle{
-
+.introTitle {
     text-align: center;
     margin-top: 1em;
     position: relative;
-    top: 10%;	
+    top: 10%;
 }
 
-
-.introSearch{
+.introSearch {
     width: 33em;
     height: 2.5em;
     font-size: 0.85em;
@@ -42,7 +40,7 @@ h1{
     margin: 2em 6em 0em 6em;
 }
 
-.introSubmit{
+.introSubmit {
     cursor: pointer;
     margin-top: 5em;
     width: 13em;
@@ -57,32 +55,31 @@ h1{
     transition: background 0.5s linear;
 }
 
-.introSearch:hover, #topBarSearch:hover{
-    
+.introSearch:hover,
+#topBarSearch:hover {
     border: darkgrey solid 1px;
-
 }
 
-.introSubmit:hover, #topBarSubmit:hover{
-    
+.introSubmit:hover,
+#topBarSubmit:hover {
     border: darkgrey solid 1px;
     background-color: lightblue;
-    
 }
 
-.introSearch:focus, .introSubmit:focus, #topBarSearch:focus, #topBarSubmit:focus{
-    
+.introSearch:focus,
+.introSubmit:focus,
+#topBarSearch:focus,
+#topBarSubmit:focus {
     border: #1f94f4 solid 1px;
-
 }
 
-.topBarContainer{
+.topBarContainer {
     width: 100%;
     height: 4em;
     background-color: yellow;
 }
 
-#bottomBarContainer{
+#bottomBarContainer {
     width: 100%;
     height: 4em;
     background-color: yellow;
@@ -90,21 +87,19 @@ h1{
     padding-left: 42.75%;
 }
 
-#topBarTitle{
-
+#topBarTitle {
     float: left;
     position: relative;
     top: 12%;
     left: 3em;
 }
 
-#positioning{
+#positioning {
     margin-top: 1em;
     position: absolute;
 }
 
-#topBarSearch{
-
+#topBarSearch {
     float: right;
     width: 20em;
     height: 2em;
@@ -112,10 +107,9 @@ h1{
     border: lightgrey solid 1px;
     padding-left: 2em;
     margin: 1em 3em 0em 3em;
-
 }
 
- #topBarSubmit{
+#topBarSubmit {
     cursor: pointer;
     margin-top: 1.2em;
     float: right;
@@ -130,46 +124,39 @@ h1{
     transition: background 0.5s linear;
 }
 
-.imageArea{
-
-
+.imageArea {
     width: 100%;
     height: 100em;
     background-color: white;
 }
 
-.imageLink{
+.imageLink {
     overflow: hidden;
     float: left;
-    width:25%;
+    width: 25%;
     height: 15%;
-
 }
 
-.flickrImage{
+.flickrImage {
     height: 100%;
     width: 100%;
     transition: all 1s ease;
-
 }
 
-
-
-.imageArea, .topBarContainer, #bottomBarContainer, #positioning{
+.imageArea,
+.topBarContainer,
+#bottomBarContainer,
+#positioning {
     display: none;
 }
 
-
-
-.flickrImage:hover{
+.flickrImage:hover {
     opacity: 0.2;
     width: 125%;
     height: 125%;
-
-
 }
 
-.linkTitle{
+.linkTitle {
     display: none;
     position: absolute;
     font-size: 1em;
@@ -177,12 +164,11 @@ h1{
     margin: 5.5em 0em 0em 2em;
 }
 
-.imageLink:hover > .linkTitle{
-
+.imageLink:hover > .linkTitle {
     display: block;
 }
 
-.topPagination{
+.topPagination {
     display: none;
     width: 100%;
     height: 4em;
@@ -191,69 +177,41 @@ h1{
     padding-left: 42.75%;
 }
 
-.zeroImages{
+.zeroImages {
     margin-left: 30%;
     font-size: 2em
 }
 
-
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 550px) {
     #topBarTitle {
         font-size: 1.5em;
         top: 10%;
         left: 7em;
     }
-
-    #topBarSearch{
-
+    #topBarSearch {
         width: 20em;
     }
-
     .topBarContainer {
-
         height: 5em;
-
     }
-
     .bootstrap-iso .pagination {
-
         margin: 20px -3em;
     }
-
-
-
 }
 
-@media only screen and (max-width: 750px){
-
- /*   .imageLink{
+@media only screen and (max-width: 750px) {
+    /*   .imageLink{
     
     width:33.33%;
     height: 15%;
     }*/
-
     #bottomBarContainer {
-    width: 100%;
-    height: 4em;
-    background-color: yellow;
-    margin-top: 170em;
+        width: 100%;
+        height: 4em;
+        background-color: yellow;
+        margin-top: 170em;
     }
-
-    #topBarSearch{
-
+    #topBarSearch {
         width: 13em;
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
