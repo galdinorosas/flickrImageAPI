@@ -4,12 +4,12 @@ $(document).ready(function() {
     var flickrResultsTotalPages = 0;
 
     /**
-     *	Function that disables the pagination number link if the searched total page number is less than 10.
-     *	@param {number} totalPageNumber - This is the total Page number from flickr API get call.
+     *  Function that disables the pagination number link if the searched total page number is less than 10.
+     *  @param {number} totalPageNumber - This is the total Page number from flickr API get call.
      */
     var disablePagination = function(totalPageNumber) {
         /**
-         *	This if statements checks if totalPageNumber parameter is greater than or equal to MAXPAGES.
+         *  This if statements checks if totalPageNumber parameter is greater than or equal to MAXPAGES.
          */
         if (totalPageNumber >= MAXPAGES) {
             return;
@@ -17,7 +17,7 @@ $(document).ready(function() {
             var disableAmount = MAXPAGES - totalPageNumber;
 
             for (var i = 1; i < 6; i++) {
-                var number = $(".topPagination li:nth-child(" + i + ")").text();
+                var number = $("ul li:nth-child(" + i + ")").text();
                 var numberInt = parseInt(number);
                 for (var k = 10; k > flickrResultsTotalPages; k--) {
                     if (numberInt === k) {
@@ -27,12 +27,11 @@ $(document).ready(function() {
                 }
             }
         }
-
     };
 
     /**
-     *	Function that waits for the click event on the pagination page links. This function uses
-     *	the flickrSearch and paginationUpdate functions.
+     *  Function that waits for the click event on the pagination page links. This function uses
+     *  the flickrSearch and paginationUpdate functions.
      */
 
     $("ul").on('click', 'a', function(event) {
@@ -47,9 +46,9 @@ $(document).ready(function() {
     });
 
     /**
-     *	Function that performs a get request to Flickr api. This also appends the images to the imagearea div.
-     *	@param {string} topic - This is string used for the Flickr API search.
-     *	@param {number} pageNumber - This is the requested page number from Flickr API.
+     *  Function that performs a get request to Flickr api. This also appends the images to the imagearea div.
+     *  @param {string} topic - This is string used for the Flickr API search.
+     *  @param {number} pageNumber - This is the requested page number from Flickr API.
      */
     function flickrSearch(topic, pageNumber) {
         $(".imageArea").empty();
@@ -71,8 +70,8 @@ $(document).ready(function() {
             var imageTotal = parseInt(results.photos.total);
 
             /**
-             *	This if statement will display a message if the total image results is zero. If the image results
-             *	is greater than zero then the images will be displayed to the imageArea div.
+             *  This if statement will display a message if the total image results is zero. If the image results
+             *  is greater than zero then the images will be displayed to the imageArea div.
              */
             if (imageTotal === 0) {
                 $(".imageArea").append("<p class='zeroImages'>No available images for current search.</p>")
@@ -94,15 +93,13 @@ $(document).ready(function() {
                     $(".imageArea").append("<a href='" + userLink + "' target='_blank' id='imageContainer' class='imageLink' > <h1 class='linkTitle'>" + photoTitle1 + " </br> " + photoTitle2 + " </br> " + photoTitle3 + " ...</h1> <img class='flickrImage' src=" + url + "></img></a>");
                 };
             }
-
-
         });
     };
 
     /**
-     *	Function that updates the pagination bars numbers. The selected page number will always be centered
-     *	on the middle of the pagination bar unless its at the end of the MAXPAGES alotment.
-     *	@param {string} pageNumber - The pagination seleceted page number.
+     *  Function that updates the pagination bars numbers. The selected page number will always be centered
+     *  on the middle of the pagination bar unless its at the end of the MAXPAGES alotment.
+     *  @param {string} pageNumber - The pagination seleceted page number.
      */
 
     function paginationUpdate(pageNumber) {
@@ -138,11 +135,9 @@ $(document).ready(function() {
             $("ul li:nth-child(3)").addClass("active");
             disablePagination(flickrResultsTotalPages);
         }
-
-
     };
     /**
-     *	Function that resets the imageArea div and ul pagination numbers when a user searches from the top bar.
+     *  Function that resets the imageArea div and ul pagination numbers when a user searches from the top bar.
      */
     var topBarSearchReset = function() {
         $(".imageArea").empty();
@@ -157,15 +152,14 @@ $(document).ready(function() {
         }
 
         $("#pageLinks:nth-child(1)").addClass("active");
-
     }
 
     /**
-     *	Function that hides the intro container and displays the "next page" elements when the user searches from the intro page.
+     *  Function that hides the intro container and displays the "next page" elements when the user searches from the intro page.
      */
     var introSearchReset = function() {
         $(".introContentContainer").css("display", "none");
-        $(".topBarContainer,.imageArea, #bottomBarContainer, #positioning,.topPagination").css("display", "inline-block");
+        $(".topBarContainer, .imageArea, .bottomBarContainer, #positioning, #topPaginationLinks").css("display", "inline-block");
 
         userSearch = $(".introSearch").val();
 
@@ -176,7 +170,7 @@ $(document).ready(function() {
     var userSearch;
 
     /**
-     *	Top bar search event handlers that wait for click or enter keypress.
+     *  Top bar search event handlers that wait for click or enter keypress.
      */
     $("#topBarSubmit").on("click", function() {
         topBarSearchReset();
@@ -189,7 +183,7 @@ $(document).ready(function() {
     });
 
     /**
-     *	Intro search event handlers that wait for click or enter keypress.
+     *  Intro search event handlers that wait for click or enter keypress.
      */
     $(".introSearch").keypress(function(event) {
         if (event.which == 13) {
@@ -202,4 +196,3 @@ $(document).ready(function() {
     });
 
 });
-
