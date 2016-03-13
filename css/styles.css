@@ -1,6 +1,8 @@
 body {
     margin: 0;
     font-family: 'Oleo Script', cursive;
+    -webkit-font-smoothing: antialiased;
+
 }
 
 button:focus,
