@@ -157,8 +157,9 @@ h1 {
         }
     }
     .zeroImages {
-        margin-left: 30%;
-        font-size: 2em
+        width: 14em;
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
@@ -214,6 +215,9 @@ h1 {
                 font-size: 0.7em;
             }
         }
+        .zeroImages {
+            font-size: 1.25em;
+        }
     }
 }
 
@@ -264,6 +268,9 @@ h1 {
         .imageLink {
             height: 15%;
             font-size: 1.2em;
+        }
+        .zeroImages {
+            font-size: 1.75em;
         }
     }
 }

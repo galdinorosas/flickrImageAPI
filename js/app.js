@@ -75,7 +75,7 @@ $(document).ready(function() {
              *  is greater than zero then the images will be displayed to the imageArea div.
              */
             if (imageTotal === 0) {
-                $(".imageArea").append("<p class='zeroImages'>No available images for current search.</p>");
+                $(".imageArea").append("<p class='zeroImages'>No Available Images For Current Search</p>");
 
             } else {
 
