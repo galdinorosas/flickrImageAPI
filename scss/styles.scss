@@ -13,9 +13,7 @@ h1 {
 }
 
 .introContentContainer {
-    
     display: block;
-    width: 40em;
     height: 12em;
     margin: 0 auto;
     border: 0;
@@ -23,16 +21,16 @@ h1 {
     top: 12em;
     .introTitle {
         text-align: center;
-        position: relative;
-        top: 15%;
+        margin-top: -1.5em;
     }
     .introSearch {
-        width: 33em;
+        width: 20em;
         height: 2.5em;
         font-size: 0.85em;
         border: lightgrey solid 1px;
-        padding-left: 2em;
-        margin: 2em 6em 0em 6em;
+        margin: 3em auto;
+        display: block;
+        text-align: center;
     }
     .introSubmit {
         cursor: pointer;
@@ -42,7 +40,8 @@ h1 {
         border: 0;
         font-weight: bold;
         font-size: 0.75em;
-        margin: 3em 20.5em;
+        margin: 3em auto;
+        display: block;
         -webkit-transition: background 0.5s linear;
         -moz-transition: background 0.5s linear;
         -o-transition: background 0.5s linear;
@@ -64,27 +63,29 @@ h1 {
 .topBarContainer {
     width: 100%;
     height: 4em;
+    display: none;
     #topBarTitle {
         top: 12%;
         width: 100%;
         height: 1em;
+        font-size: 2em;
         text-align: center;
     }
     .topInfoContainer {
-        width: 26em;
-        height: 2em;
-        margin: 0 auto;
+        margin-top: 1em;
         #topBarSearch {
             text-align: center;
             width: 15em;
             height: 2.5em;
             font-size: 0.85em;
             border: lightgrey solid 1px;
-            margin: 1em 0em 0em 1em;
+            margin: 0 auto;
+            display: block;
         }
         #topBarSubmit {
             cursor: pointer;
-            margin: 1em 0em 0em 1em;
+            margin: 1em auto;
+            display: block;
             width: 13em;
             height: 2.5em;
             border: 0;
@@ -108,12 +109,17 @@ h1 {
         }
     }
     .paginationContainer {
-        width: 12em;
+        width: 11.3em;
         height: 1em;
         margin: 0 auto;
         #positioning {
             margin-top: 1em;
             position: absolute;
+            display: none;
+        }
+        .pagination {
+            margin: 0;
+            font-size: 0.8em;
         }
     }
 }
@@ -122,11 +128,12 @@ h1 {
     width: 100%;
     height: 100em;
     background-color: white;
+    display: none;
     .imageLink {
         overflow: hidden;
         float: left;
-        width: 25%;
-        height: 8%;
+        width: 50%;
+        height: 10%;
         .flickrImage {
             height: 100%;
             width: 100%;
@@ -140,9 +147,10 @@ h1 {
         .linkTitle {
             display: none;
             position: absolute;
-            font-size: 0.45em;
+            font-size: 0.8em;
             color: black;
-            margin: 5.5em 0em 0em 2em;
+            margin: 3em 0em 0em 2em;
+            line-height: 2em;
         }
     }
     .zeroImages {
@@ -161,8 +169,98 @@ h1 {
     display: block;
 }
 
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) {
+    .introContentContainer {
+        .introTitle {
+            font-size: 3.25em;
+        }
+        .introSearch {
+            font-size: 1em;
+        }
+        .introSubmit {
+            font-size: .9em;
+        }
+    }
+    .topBarContainer {
+        #topBarTitle {
+            font-size: 2.5em;
+        }
+        .topInfoContainer {
+            #topBarSearch {
+                width: 17em;
+                font-size: 0.9em;
+            }
+            #topBarSubmit {
+                font-size: 0.9em;
+            }
+        }
+        .paginationContainer {
+            width: 12em;
+            .pagination {
+                font-size: 1em;
+                width: 15em;
+            }
+        }
+    }
+    .imageArea {
+        .imageLink {
+            width: 25%;
+            .linkTitle {
+                margin: 4em 0em 0em 1em;
+                font-size: 0.7em;
+            }
+        }
+    }
+}
 
-@media only screen and (min-width: 900px) {}
+@media only screen and (min-width: 800px) {
+    .imageArea {
+        .imageLink {
+            .linkTitle {
+                font-size: .9em;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .introContentContainer {
+        .introTitle {
+            font-size: 4.25em;
+        }
+        .introSearch {
+            width: 25em;
+        }
+        .introSubmit {
+            width: 15em;
+        }
+    }
+    .topBarContainer {
+        #topBarTitle {
+            font-size: 3em;
+        }
+        .topInfoContainer {
+            #topBarSearch {
+                width: 20em;
+                font-size: 1em;
+            }
+            #topBarSubmit {
+                font-size: 1em;
+            }
+        }
+        .paginationContainer {
+            .pagination {
+                font-size: 1.2em;
+                width: 15em;
+            }
+        }
+    }
+    .imageArea {
+        .imageLink {
+            height: 15%;
+            font-size: 1.2em;
+        }
+    }
+}
 
 @media only screen and (min-width: 1100px) {}

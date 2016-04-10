@@ -91,7 +91,7 @@ $(document).ready(function() {
 
                     var url = "https://farm" + results.photos.photo[i].farm + ".staticflickr.com/" + results.photos.photo[i].server + "/" + results.photos.photo[i].id + "_" + results.photos.photo[i].secret + "_n.jpg";
 
-                    $(".imageArea").append("<a href='" + userLink + "' target='_blank' id='imageContainer' class='imageLink' > <h1 class='linkTitle'>" + photoTitle1 + " </br> " + photoTitle2 + " </br> " + photoTitle3 + " ...</h1> <img class='flickrImage' src=" + url + "></img></a>");
+                    $(".imageArea").append("<a href='" + url + "' target='_blank' id='imageContainer' class='imageLink' > <h1 class='linkTitle'>" + photoTitle1 + " </br> " + photoTitle2 + " </br> " + photoTitle3 + " ...</h1> <img class='flickrImage' src=" + url + "></img></a>");
                 }
             }
         });
