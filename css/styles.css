@@ -1,6 +1,8 @@
 body {
     margin: 0;
     font-family: 'Oleo Script', cursive;
+    -webkit-font-smoothing: antialiased;
+
 }
 
 button:focus,
@@ -26,26 +28,28 @@ h1 {
     text-align: center;
     position: relative;
     top: 15%;
+    font-size: 2em;
+    margin-left: -8.5em;
 }
 
 .introSearch {
-    width: 33em;
+    width: 19em;
     height: 2.5em;
     font-size: 0.85em;
     border: lightgrey solid 1px;
     padding-left: 2em;
-    margin: 2em 6em 0em 6em;
+    margin: 2em 6em 0em 4em;
 }
 
 .introSubmit {
     cursor: pointer;
     margin-top: 5em;
-    width: 13em;
-    height: 3em;
+    width: 9em;
+    height: 2em;
     border: 0;
     font-weight: bold;
     font-size: 0.75em;
-    margin: 3em 20.5em;
+    margin: 3em 10.5em;
     -webkit-transition: background 0.5s linear;
     -moz-transition: background 0.5s linear;
     -o-transition: background 0.5s linear;
@@ -83,9 +87,9 @@ h1 {
 }
 
 .topInfoContainer {
-    width: 26em;
+    width: 14em;
     height: 2em;
-    margin: 0 auto;
+    margin: 3em auto;
 }
 
 .paginationContainer {
@@ -105,12 +109,12 @@ h1 {
     height: 2.5em;
     font-size: 0.85em;
     border: lightgrey solid 1px;
-    margin: 1em 0em 0em 1em;
+    margin: 1em 0em 0em 0.5em;
 }
 
 #topBarSubmit {
     cursor: pointer;
-    margin: 1em 0em 0em 1em;
+    margin: 1em 0em 0em 2.75em;
     width: 13em;
     height: 2.5em;
     border: 0;
@@ -173,6 +177,22 @@ h1 {
 @media only screen and (min-width: 600px) {
     .topInfoContainer {
         width: 36em;
+    }
+
+    .introTitle {
+        font-size: 2.5em;
+        margin-left: 0em;
+    }
+
+    .introSearch {
+        width: 26em;
+        margin: 3em 6em 0em 10.5em;
+    }
+
+    .introSubmit {
+        width: 11em;
+        height: 3em;
+        margin: 3em 20.5em;
     }
     #topBarSearch {
         text-align: center;
