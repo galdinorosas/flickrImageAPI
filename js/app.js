@@ -37,7 +37,7 @@ $(document).ready(function() {
     $("ul").on('click', 'a', function(event) {
 
         if ($('ul li').hasClass('disabled')) {
-            return
+            return;
         } else {
             var selected = $(this).text();
             flickrSearch(userSearch, selected);
@@ -74,7 +74,7 @@ $(document).ready(function() {
              *  is greater than zero then the images will be displayed to the imageArea div.
              */
             if (imageTotal === 0) {
-                $(".imageArea").append("<p class='zeroImages'>No available images for current search.</p>")
+                $(".imageArea").append("<p class='zeroImages'>No available images for current search.</p>");
 
             } else {
 
@@ -86,15 +86,15 @@ $(document).ready(function() {
                     var photoTitle2 = results.photos.photo[i].title.substring(25, 50);
                     var photoTitle3 = results.photos.photo[i].title.substring(50, 75);
 
-                    var userLink = "https://www.flickr.com/people/" + userID + "/"
+                    var userLink = "https://www.flickr.com/people/" + userID + "/";
 
                     var url = "https://farm" + results.photos.photo[i].farm + ".staticflickr.com/" + results.photos.photo[i].server + "/" + results.photos.photo[i].id + "_" + results.photos.photo[i].secret + "_n.jpg";
 
                     $(".imageArea").append("<a href='" + userLink + "' target='_blank' id='imageContainer' class='imageLink' > <h1 class='linkTitle'>" + photoTitle1 + " </br> " + photoTitle2 + " </br> " + photoTitle3 + " ...</h1> <img class='flickrImage' src=" + url + "></img></a>");
-                };
+                }
             }
         });
-    };
+    }
 
     /**
      *  Function that updates the pagination bars numbers. The selected page number will always be centered
@@ -135,7 +135,7 @@ $(document).ready(function() {
             $("ul li:nth-child(3)").addClass("active");
             disablePagination(flickrResultsTotalPages);
         }
-    };
+    }
     /**
      *  Function that resets the imageArea div and ul pagination numbers when a user searches from the top bar.
      */
@@ -152,7 +152,7 @@ $(document).ready(function() {
         }
 
         $("#pageLinks:nth-child(1)").addClass("active");
-    }
+    };
 
     /**
      *  Function that hides the intro container and displays the "next page" elements when the user searches from the intro page.
@@ -165,7 +165,7 @@ $(document).ready(function() {
 
         flickrSearch(userSearch, 1);
         $("#pageLinks:nth-child(1)").addClass("active");
-    }
+    };
 
     var userSearch;
 
