@@ -8,6 +8,7 @@ $(document).ready(function() {
      *  @param {number} totalPageNumber - This is the total Page number from flickr API get call.
      */
     var disablePagination = function(totalPageNumber) {
+        
         /**
          *  This if statements checks if totalPageNumber parameter is greater than or equal to MAXPAGES.
          */
