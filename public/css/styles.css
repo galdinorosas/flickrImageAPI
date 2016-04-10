@@ -37,6 +37,7 @@ h1 {
     font-size: 0.75em;
     margin: 3em auto;
     display: block;
+    background-color: lightgrey;
     -webkit-transition: background 0.5s linear;
     -moz-transition: background 0.5s linear;
     -o-transition: background 0.5s linear;
@@ -53,7 +54,8 @@ h1 {
 .topBarContainer {
   width: 100%;
   height: 4em;
-  display: none; }
+  display: none;
+  margin-bottom: 9em; }
   .topBarContainer #topBarTitle {
     top: 12%;
     width: 100%;
@@ -72,6 +74,7 @@ h1 {
       display: block; }
     .topBarContainer .topInfoContainer #topBarSubmit {
       cursor: pointer;
+      background-color: lightgrey;
       margin: 1em auto;
       display: block;
       width: 13em;
@@ -147,18 +150,20 @@ h1 {
     font-size: 1em; }
   .introContentContainer .introSubmit {
     font-size: .9em; }
-  .topBarContainer #topBarTitle {
-    font-size: 2.5em; }
-  .topBarContainer .topInfoContainer #topBarSearch {
-    width: 17em;
-    font-size: 0.9em; }
-  .topBarContainer .topInfoContainer #topBarSubmit {
-    font-size: 0.9em; }
-  .topBarContainer .paginationContainer {
-    width: 12em; }
-    .topBarContainer .paginationContainer .pagination {
-      font-size: 1em;
-      width: 15em; }
+  .topBarContainer {
+    margin-bottom: 10.5em; }
+    .topBarContainer #topBarTitle {
+      font-size: 2.5em; }
+    .topBarContainer .topInfoContainer #topBarSearch {
+      width: 17em;
+      font-size: 0.9em; }
+    .topBarContainer .topInfoContainer #topBarSubmit {
+      font-size: 0.9em; }
+    .topBarContainer .paginationContainer {
+      width: 12em; }
+      .topBarContainer .paginationContainer .pagination {
+        font-size: 1em;
+        width: 15em; }
   .imageArea .imageLink {
     width: 25%; }
     .imageArea .imageLink .linkTitle {
@@ -176,16 +181,18 @@ h1 {
     width: 25em; }
   .introContentContainer .introSubmit {
     width: 15em; }
-  .topBarContainer #topBarTitle {
-    font-size: 3em; }
-  .topBarContainer .topInfoContainer #topBarSearch {
-    width: 20em;
-    font-size: 1em; }
-  .topBarContainer .topInfoContainer #topBarSubmit {
-    font-size: 1em; }
-  .topBarContainer .paginationContainer .pagination {
-    font-size: 1.2em;
-    width: 15em; }
+  .topBarContainer {
+    margin-bottom: 12em; }
+    .topBarContainer #topBarTitle {
+      font-size: 3em; }
+    .topBarContainer .topInfoContainer #topBarSearch {
+      width: 20em;
+      font-size: 1em; }
+    .topBarContainer .topInfoContainer #topBarSubmit {
+      font-size: 1em; }
+    .topBarContainer .paginationContainer .pagination {
+      font-size: 1.2em;
+      width: 15em; }
   .imageArea .imageLink {
     height: 15%;
     font-size: 1.2em; } }
